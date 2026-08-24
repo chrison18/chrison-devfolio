@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -19,67 +19,47 @@ html {
 }
 
 body {
-  background-color: #0a0a0b;
-  color: #f5f5f7;
+  background-color: #faf8f5;
+  color: #1c1c1e;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
+/* 滚动条 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0b;
+  background: #faf8f5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #26262c;
-  border-radius: 4px;
+  background: #d4cfc7;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #34d399;
+  background: #a0896c;
 }
 
 ::selection {
-  background: rgba(52, 211, 153, 0.3);
-  color: #f5f5f7;
+  background: rgba(160, 137, 108, 0.2);
+  color: #1c1c1e;
 }
 
 @layer components {
   .container-content {
-    @apply mx-auto w-full max-w-content px-8;
+    @apply mx-auto w-full max-w-content px-6 md:px-8;
   }
 
   .section-label {
-    @apply font-mono text-xs uppercase tracking-[0.25em] text-accent;
+    @apply font-mono text-xs uppercase tracking-wider2 text-accent;
   }
 
   .section-title {
-    @apply text-4xl font-bold tracking-tight text-text-primary md:text-5xl;
+    @apply font-serif text-3xl font-semibold tracking-tight text-ink md:text-4xl;
   }
 
-  .glass-card {
-    @apply rounded-2xl border border-bg-border bg-bg-card/60 backdrop-blur-sm;
+  .divider {
+    @apply h-px w-full bg-bg-border;
   }
-
-  .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-bg transition-all duration-300 hover:bg-accent-dim hover:shadow-[0_0_30px_rgba(110,231,183,0.3)];
-  }
-
-  .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-full border border-bg-border px-6 py-3 text-sm font-medium text-text-secondary transition-all duration-300 hover:border-accent/50 hover:text-text-primary;
-  }
-}
-
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(110, 231, 183, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(110, 231, 183, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.fade-mask {
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }

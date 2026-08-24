@@ -1,16 +1,6 @@
 import { useState, useEffect } from 'react'
 import { projects as fallbackProjects } from '../data/portfolio'
 
-export interface Project {
-  id: number
-  title: string
-  description: string
-  tags: string[]
-  image: string
-  link: string
-  featured: boolean
-}
-
 /**
  * 项目数据 Hook
  *
@@ -19,10 +9,10 @@ export interface Project {
  *
  * 后端接口约定：
  *   GET /api/projects
- *   Response: { data: Project[] }
+ *   Response: { data: Project[] } 或直接 Project[]
  */
 export function useProjects() {
-  const [data, setData] = useState<Project[]>(fallbackProjects)
+  const [data, setData] = useState(fallbackProjects)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -45,7 +35,6 @@ export function useProjects() {
       } catch (err) {
         if ((err as Error).name !== 'AbortError') {
           setError((err as Error).message)
-          // 接口不可用时静默回退到占位数据
         }
       } finally {
         setLoading(false)

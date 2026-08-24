@@ -5,46 +5,31 @@ export default {
     extend: {
       colors: {
         bg: {
-          DEFAULT: '#0a0a0b',
-          soft: '#111113',
-          card: '#16161a',
-          border: '#26262c',
+          DEFAULT: '#faf8f5',
+          soft: '#f5f2ed',
+          card: '#ffffff',
+          border: '#e8e4df',
+        },
+        ink: {
+          DEFAULT: '#1c1c1e',
+          soft: '#3d3d3d',
+          muted: '#9e9e9e',
         },
         accent: {
-          DEFAULT: '#6ee7b7',
-          dim: '#34d399',
-        },
-        text: {
-          primary: '#f5f5f7',
-          secondary: '#a1a1aa',
-          muted: '#71717a',
+          DEFAULT: '#6b5344',
+          light: '#a0896c',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['JetBrains Mono', 'SF Mono', 'monospace'],
+        serif: ['"Noto Serif SC"', 'Georgia', 'serif'],
       },
       maxWidth: {
-        content: '1700px',
+        content: '1100px',
       },
-      animation: {
-        'fade-in': 'fadeIn 0.8s ease-out forwards',
-        'fade-up': 'fadeUp 0.8s ease-out forwards',
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(24px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
-        },
+      letterSpacing: {
+        wider2: '0.15em',
       },
     },
   },

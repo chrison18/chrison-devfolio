@@ -1,106 +1,106 @@
-import { profile, stats, contacts } from '../data/portfolio'
+import { profile, advantages, skills, certificates } from '../data/portfolio'
 
 export default function About() {
   return (
-    <section id="about" className="relative py-32">
+    <section id="about" className="py-24 md:py-32">
       <div className="container-content">
         {/* 头部 */}
-        <div className="mb-16 flex flex-col gap-4">
+        <div className="mb-16">
           <span className="section-label">01 / 关于我</span>
-          <h2 className="section-title">个人经历</h2>
+          <h2 className="section-title mt-3">个人简介</h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          {/* 左侧：头像 + 基本信息 */}
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
+          {/* 左侧：基本信息 */}
           <div className="lg:col-span-4">
-            <div className="glass-card overflow-hidden">
-              {/* 头像区域 */}
-              <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-bg-card to-bg-soft">
-                {/* 占位头像 — 可替换为 <img src={profile.avatar} /> */}
-                <div className="flex h-full w-full items-center justify-center">
-                  <span className="font-mono text-8xl font-bold text-accent/20">C</span>
-                </div>
-                {/* 装饰角标 */}
-                <div className="absolute left-4 top-4 flex h-3 w-3 items-center justify-center">
-                  <span className="absolute h-3 w-3 animate-ping rounded-full bg-accent opacity-60" />
-                  <span className="h-2 w-2 rounded-full bg-accent" />
-                </div>
-                <div className="absolute bottom-4 right-4 rounded-md border border-bg-border bg-bg/80 px-2 py-1 font-mono text-xs text-text-secondary backdrop-blur-sm">
-                  {profile.location}
-                </div>
-              </div>
-
-              {/* 基本信息 */}
-              <div className="border-t border-bg-border p-6">
-                <h3 className="text-xl font-bold text-text-primary">{profile.name}</h3>
-                <p className="mt-1 text-sm text-accent">{profile.title}</p>
-                <div className="mt-4 space-y-3">
-                  {contacts.map((c) => (
-                    <a
-                      key={c.label}
-                      href={c.href}
-                      className="flex items-center justify-between text-sm transition-colors hover:text-accent"
+            <div className="space-y-6">
+              <InfoRow label="姓名" value={profile.name} />
+              <InfoRow label="性别" value={profile.gender} />
+              <InfoRow label="年龄" value={`${profile.age} 岁`} />
+              <InfoRow label="学校" value="湖南大学" />
+              <InfoRow label="专业" value="信息与计算科学（本科）" />
+              <InfoRow label="求职意向" value={profile.target} />
+              <InfoRow label="期望城市" value={profile.location} />
+              <div className="divider my-4" />
+              <div>
+                <div className="mb-2 font-mono text-xs text-ink-muted">资格证书</div>
+                <div className="flex flex-wrap gap-2">
+                  {certificates.map((c) => (
+                    <span
+                      key={c}
+                      className="rounded-md border border-bg-border bg-bg-card px-2.5 py-1 text-xs text-ink-soft"
                     >
-                      <span className="text-text-muted">{c.label}</span>
-                      <span className="font-mono text-text-secondary">{c.value}</span>
-                    </a>
+                      {c}
+                    </span>
                   ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 右侧：介绍 + 数据 */}
-          <div className="flex flex-col gap-10 lg:col-span-8">
-            {/* 个人介绍 */}
+          {/* 右侧：个人优势 + 技能 */}
+          <div className="space-y-14 lg:col-span-8">
+            {/* 个人优势 */}
             <div>
-              <p className="text-lg leading-relaxed text-text-secondary">
-                {profile.bio}
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-text-muted">
-                过去几年里，我参与并主导了多个从 0 到 1 的系统搭建，涵盖交易平台、知识库系统、智能 Agent 等领域。
-                我相信好的工程师不仅要写出能运行的代码，更要对系统的可维护性、可扩展性和稳定性负责。
-              </p>
-            </div>
-
-            {/* 数据统计 */}
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="glass-card group p-6 transition-all duration-300 hover:border-accent/30"
-                >
-                  <div className="font-mono text-3xl font-bold text-text-primary transition-colors group-hover:text-accent md:text-4xl">
-                    {stat.value}
+              <h3 className="mb-6 font-serif text-xl font-semibold text-ink">个人优势</h3>
+              <div className="space-y-6">
+                {advantages.map((adv, i) => (
+                  <div key={i} className="flex gap-4">
+                    <span className="mt-0.5 font-mono text-xs text-accent">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <h4 className="mb-1 text-base font-medium text-ink">{adv.title}</h4>
+                      <p className="text-sm leading-relaxed text-ink-soft">{adv.description}</p>
+                    </div>
                   </div>
-                  <div className="mt-2 text-xs text-text-muted">{stat.label}</div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* 技术栈标签 */}
+            <div className="divider" />
+
+            {/* 技能栈 */}
             <div>
-              <h4 className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-text-muted">
-                核心技术栈
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  'Java', 'Go', 'TypeScript', 'Spring Cloud', 'Kafka', 'Redis',
-                  'MySQL', 'PostgreSQL', 'Docker', 'Kubernetes', 'LangChain', 'RAG',
-                  'Vector DB', 'FastAPI', 'React',
-                ].map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-md border border-bg-border bg-bg-card/50 px-3 py-1.5 font-mono text-xs text-text-secondary transition-colors hover:border-accent/40 hover:text-accent"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              <h3 className="mb-6 font-serif text-xl font-semibold text-ink">技能栈</h3>
+              <div className="space-y-5">
+                <SkillGroup label="编程语言" items={skills.languages} />
+                <SkillGroup label="框架与库" items={skills.frameworks} />
+                <SkillGroup label="数据库" items={skills.databases} />
+                <SkillGroup label="AI 技术" items={skills.ai} />
+                <SkillGroup label="工具与其他" items={skills.tools} />
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+  )
+}
+
+function InfoRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between border-b border-bg-border pb-2">
+      <span className="font-mono text-xs text-ink-muted">{label}</span>
+      <span className="text-sm text-ink">{value}</span>
+    </div>
+  )
+}
+
+function SkillGroup({ label, items }: { label: string; items: string[] }) {
+  return (
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline">
+      <span className="w-24 shrink-0 font-mono text-xs text-ink-muted">{label}</span>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((item) => (
+          <span
+            key={item}
+            className="rounded bg-bg-soft px-2 py-0.5 font-mono text-xs text-ink-soft"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
   )
 }
